@@ -26,6 +26,14 @@
 			</div>
 			<div class="row">
 				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
+				<dcu-status />
 			</div>
 		</div>
 	</div>
