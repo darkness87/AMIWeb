@@ -59,7 +59,7 @@ export default {
 
 				colorAxis: {
 					min: 0,
-					//max: 100,
+					max: 100,
 					labels: {
 						format: "{value}%"
 					},
