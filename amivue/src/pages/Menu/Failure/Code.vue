@@ -28,8 +28,7 @@ export default {
 			type: Array,
 			default: function() {
 				return [
-					["region", "estate", "building"],
-					["dcuCode", "durationDate"]
+					["region", "estate", "dcuCode"]
 				];
 			}
 		},
@@ -62,6 +61,14 @@ export default {
 				{
 					key: "estateName",
 					label: this.$t("component.content.table.estateName")
+				},
+				{
+					key: "buildingName",
+					label: this.$t("component.content.table.buildingName")
+				},
+				{
+					key: "houseName",
+					label: this.$t("component.content.table.houseName")
 				},
 				{
 					key: "dcuId",
