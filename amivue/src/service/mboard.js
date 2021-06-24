@@ -11,7 +11,7 @@ export default {
 	},
 	lpCount(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -24,7 +24,7 @@ export default {
 	},
 	readingRate(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -37,7 +37,7 @@ export default {
 	},
 	mapInfo(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -50,7 +50,7 @@ export default {
 	},
 	aggregations(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;

@@ -5,7 +5,7 @@ import { EventSourcePolyfill } from "event-source-polyfill";
 export default {
 	allData(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -25,7 +25,7 @@ export default {
 	totalVoltage(sec) {
 		if (!sec && sec != 0) {
 			console.log(sec);
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -38,7 +38,7 @@ export default {
 	},
 	readingRate(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -51,7 +51,7 @@ export default {
 	},
 	todayFault(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -64,7 +64,7 @@ export default {
 	},
 	todayWeather(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -77,7 +77,7 @@ export default {
 	},
 	dataWeather(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;
@@ -103,7 +103,7 @@ export default {
 	},
 	mapInfo(sec) {
 		if (!sec) {
-			sec = 30;
+			sec = 60;
 		}
 
 		const token = Store.state.userStore.token.accessToken;

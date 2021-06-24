@@ -8,12 +8,10 @@
 				</div>
 				<total-voltage :data="totalVoltage" />
 				<reading :data="reading" />
-				<today-fault :data="todayFault" />
 				<today-weather :data="todayWeather" />
 			</b-col>
 			<b-col xl="4" lg="6" md="12" sm="12">
 				<region-map :data="regionMap" />
-				<equipment-state :data="deviceMapErrorCount" />
 			</b-col>
 			<b-col xl="4" lg="12" md="12" sm="12">
 				<div class="presentMenu">
@@ -36,10 +34,8 @@
 					</ul>
 				</div>
 				<server-info />
-				<regist-equipment :data="device" />
-				<region-usage />
-				<ami-status-board />
-				<regular-board />
+				<ami-status-board :data="deviceMapErrorCount" />
+				<regular-board :data="readingDayInfo" />
 			</b-col>
 		</b-row>
 	</div>
@@ -50,12 +46,8 @@ import Dashboard from "@/service/dashboard";
 import DashboardTimer from "@/components/DashboardTimer";
 import TotalVoltage from "@/components/chart/TotalVoltage";
 import Reading from "@/components/chart/Reading";
-import TodayFault from "@/components/chart/TodayFault";
 import TodayWeather from "@/components/chart/TodayWeather";
-import EquipmentState from "@/components/chart/EquipmentState";
 import ServerInfo from "@/components/chart/ServerInfo";
-import RegionUsage from "@/components/chart/RegionUsage";
-import RegistEquipment from "@/components/chart/RegistEquipment";
 import RegionMap from "@/components/chart/RegionMap";
 import AmiStatusBoard from "@/components/chart/AmiStatusBoard";
 import RegularBoard from "@/components/chart/RegularBoard";
@@ -71,49 +63,43 @@ export default {
 		DashboardTimer,
 		TotalVoltage,
 		Reading,
-		TodayFault,
 		TodayWeather,
-		EquipmentState,
 		ServerInfo,
-		RegionUsage,
-		RegistEquipment,
 		RegionMap,
 		AmiStatusBoard,
 		RegularBoard
 	},
 	async mounted() {
-		sse = Dashboard.allData(30);
+		sse = Dashboard.allData(60);
 		sse.onerror = function() {};
 		sse.onopen = function() {};
 		sse.onmessage = e => {
 			const data = JSON.parse(e.data);
 			this.totalVoltage = data.useData;
 			this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
-			this.todayFault = data.failureStatus;
 			this.reading = data.rate;
-			this.device = data.device;
 			this.deviceMapErrorCount = data.deviceMapErrorCount;
+			this.readingDayInfo = data.readingDayInfo;
 			this.regionMap = data.map;
 		};
 		const response = await Dashboard.firstData();
 		const data = response.data;
 		this.totalVoltage = data.useData;
 		this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
-		this.todayFault = data.failureStatus;
 		this.reading = data.rate;
-		this.device = data.device;
 		this.deviceMapErrorCount = data.deviceMapErrorCount;
+		this.readingDayInfo = data.readingDayInfo;
 		this.regionMap = data.map;
+		console.log(this.deviceMapErrorCount);
 	},
 	data: function() {
 		return {
 			now: Date.now(),
 			totalVoltage: null,
 			todayWeather: null,
-			todayFault: null,
 			reading: null,
-			device: null,
 			deviceMapErrorCount: null,
+			readingDayInfo: null,
 			regionMap: [
 				{ hckey: "kr-so", value: 0 },
 				{ hckey: "kr-pu", value: 0 },

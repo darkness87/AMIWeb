@@ -2,7 +2,7 @@
 	<div class="box">
 		<h5>
 			<span>정기 검침 현황</span>
-			<b>2021년 1월 4일 정기 검침일</b>
+			<b>{{ data ? data.readingDay : "" }} 정기 검침일</b>
 		</h5>
 		<div class="regularBoard">
 			<ul>
@@ -10,7 +10,7 @@
 					<div class="regularSvgWrap">
 						<img src="~@/assets/svg/icon_building.svg" alt="" title="" />
 						<div>
-							<p>124,112</p>
+							<p>{{ data ? data.houseCount : 0 }}</p>
 							<p>세대</p>
 						</div>
 					</div>
@@ -20,7 +20,9 @@
 					<div class="regularSvgWrap">
 						<img src="~@/assets/svg/icon_building.svg" alt="" title="" />
 						<div>
-							<p><b>1</b></p>
+							<p>
+								<b>{{ data ? data.houseErrorCount : 0 }}</b>
+							</p>
 							<p><span>세대</span></p>
 						</div>
 					</div>
@@ -44,6 +46,7 @@ HighChartsMoreInit(Highcharts);
 SolidGaugeInit(Highcharts);
 
 export default {
+	props: ["data"],
 	components: {
 		HighCharts: Chart
 	},
@@ -95,13 +98,13 @@ export default {
 					menu: false,
 					series: [
 						{
-							name: "적시율",
+							name: "정기검침율",
 							data: [
 								{
 									color: "#fdff4b",
 									radius: "80%",
 									innerRadius: "70%",
-									y: 90
+									y: this.data ? this.data.readingRate : 0
 								}
 							],
 							dataLabels: {

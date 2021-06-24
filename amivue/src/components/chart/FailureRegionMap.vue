@@ -60,6 +60,7 @@ export default {
 
 				colorAxis: {
 					min: 0,
+					max: 100,
 					minColor: "rgba(220,53,69,0)", //min컬러
 					maxColor: "rgba(220,53,69,1)" //max컬러
 				},

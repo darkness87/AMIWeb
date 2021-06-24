@@ -2,7 +2,7 @@
 	<div class="box">
 		<h5>
 			<span>{{ $t("FBoard.failureRegionBoard") }}</span>
-			<b class="fontC">7 {{ $t("dashboard.ea") }}</b>
+			<!-- <b class="fontC">7 {{ $t("dashboard.ea") }}</b> -->
 		</h5>
 		<div class="tableWarp">
 			<div class="tableContainer mboard-table">
