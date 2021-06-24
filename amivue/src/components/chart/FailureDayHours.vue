@@ -91,6 +91,7 @@ export default {
 					menu: false,
 					series: [
 						{
+							name: "상태 발생 건수",
 							data: this.data ? this.data.arrayData.map(item => item.count) : [],
 							color: "#1ee2df"
 						}

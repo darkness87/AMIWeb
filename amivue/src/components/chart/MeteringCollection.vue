@@ -90,6 +90,7 @@ export default {
 					menu: false,
 					series: [
 						{
+							name: "데이터 수집 수",
 							data: this.data ? this.data.map(item => item.count) : [],
 							color: "#1ee2df"
 						}

@@ -33,7 +33,7 @@ export default {
 		}
 	},
 	mounted() {
-		sse = Fboard.mapInfo(5);
+		sse = Fboard.mapInfo();
 		sse.onerror = function() {};
 		sse.onopen = function() {};
 		sse.onmessage = e => {
