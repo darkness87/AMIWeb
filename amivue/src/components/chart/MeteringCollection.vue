@@ -51,16 +51,7 @@ export default {
 						}
 					},
 					legend: {
-						symbolHeight: 8,
-						symbolWidth: 8,
-						symbolRadius: 4,
-						marginTop: 10,
-						verticalAlign: "top",
-						align: "right",
-						itemStyle: {
-							fontSize: "0.9rem",
-							fontWeight: 100
-						}
+						enabled: false
 					},
 					plotOptions: {
 						column: { borderRadius: 1 },

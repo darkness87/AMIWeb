@@ -54,11 +54,7 @@ export default {
 					plotOptions: {
 						column: { borderRadius: 1 },
 						series: {
-							borderColor: "none",
-							dataLabels: {
-								enabled: true,
-								style: { fontWeight: "none", fontSize: "10", fontColor: "#232f4b" }
-							}
+							borderColor: "none"
 						}
 					},
 					credits: {
@@ -94,7 +90,12 @@ export default {
 						{
 							name: "오늘",
 							data: this.data ? this.data.todayData.map(item => item.use) : [],
-							color: "#1ee2df"
+							color: "#1ee2df",
+							dataLabels: {
+								enabled: true,
+								y: -5,
+								style: { fontWeight: "none", fontSize: "10", fontColor: "#232f4b" }
+							}
 						},
 						{
 							name: "어제",
