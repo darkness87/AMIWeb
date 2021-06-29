@@ -27,7 +27,7 @@ export default {
 		shows: {
 			type: Array,
 			default: function() {
-				return ["region", "estate", "dcuCode"];
+				return [["region", "estate", "dcuCode"]];
 			}
 		},
 		showFilterList: {

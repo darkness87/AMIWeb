@@ -64,7 +64,7 @@ export default {
 						title: null,
 						tickColor: "#232f4b",
 						gridLineColor: "#232f4b",
-						min: "0",
+						min: 0,
 						lineColor: "#232f4b",
 						labels: {
 							style: {
@@ -74,6 +74,8 @@ export default {
 					},
 					xAxis: {
 						title: null,
+						min: 0,
+						max: 23,
 						gridLineColor: null,
 						tickColor: "#232f4b",
 						lineColor: "#232f4b",
@@ -109,7 +111,8 @@ export default {
 	},
 	data() {
 		return {
-			chartName: "column"
+			//chartName: "column"
+			chartName: "spline"
 		};
 	}
 };

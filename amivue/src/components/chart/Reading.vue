@@ -64,6 +64,8 @@ export default {
 					xAxis: {
 						categories: this.data ? this.data.hourRate.map(item => item.hour) : [],
 						title: null,
+						min: 0,
+						max: 23,
 						gridLineColor: "#232f4b",
 						lineColor: "#232f4b",
 						labels: {
@@ -74,6 +76,10 @@ export default {
 					},
 					yAxis: {
 						title: null,
+						min: 0,
+						max: 100,
+						height: 125,
+						top: 50,
 						tickColor: "#232f4b",
 						gridLineColor: "#232f4b",
 						lineColor: "#232f4b",
