@@ -95,24 +95,24 @@ export default {
 		return {
 			hcInstance: Highcharts,
 			data: [
-				["kr-4194", null], // 전국
-				["kr-kg", null], // 경기도
-				["kr-cb", null], // 전라북도
-				["kr-kn", null], // 경상남도
-				["kr-2685", null], // 전라남도
-				["kr-pu", null], // 부산광역시
-				["kr-2688", null], // 경상북도
-				["kr-sj", null], // 세종특별자치시
-				["kr-tj", null], // 대전광역시
-				["kr-ul", null], // 울산광역시
-				["kr-in", null], // 인천광역시
-				["kr-kw", null], // 강원도
-				["kr-gn", null], // 충청남도
-				["kr-cj", null], // 제주도
-				["kr-gb", null], // 충청북도
-				["kr-so", null], // 서울
-				["kr-tg", null], // 대구광역시
-				["kr-kj", null] // 광주광역시
+				["kr-4194", NaN], // 전국
+				["kr-kg", NaN], // 경기도
+				["kr-cb", NaN], // 전라북도
+				["kr-kn", NaN], // 경상남도
+				["kr-2685", NaN], // 전라남도
+				["kr-pu", NaN], // 부산광역시
+				["kr-2688", NaN], // 경상북도
+				["kr-sj", NaN], // 세종특별자치시
+				["kr-tj", NaN], // 대전광역시
+				["kr-ul", NaN], // 울산광역시
+				["kr-in", NaN], // 인천광역시
+				["kr-kw", NaN], // 강원도
+				["kr-gn", NaN], // 충청남도
+				["kr-cj", NaN], // 제주도
+				["kr-gb", NaN], // 충청북도
+				["kr-so", NaN], // 서울
+				["kr-tg", NaN], // 대구광역시
+				["kr-kj", NaN] // 광주광역시
 			]
 		};
 	},

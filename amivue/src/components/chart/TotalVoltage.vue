@@ -2,7 +2,7 @@
 	<div class="box power">
 		<h5>
 			<span>{{ $t("dashboard.totalVoltage") }}</span>
-			<b class="fontC">{{ data ? data.todayUseAll : "" }} wh</b>
+			<b class="fontC">{{ data ? data.todayUseAll : "" }} kWh</b>
 		</h5>
 		<div class="chartWarp">
 			<div class="">
@@ -88,6 +88,9 @@ export default {
 					exporting: { enabled: false },
 					title: "",
 					menu: false,
+					tooltip: {
+						pointFormat: "<span>{point.y:,.1f} kWh</span>"
+					},
 					series: [
 						{
 							name: "오늘",
@@ -96,13 +99,15 @@ export default {
 							dataLabels: {
 								enabled: true,
 								y: -5,
-								style: { fontWeight: "none", fontSize: "10", fontColor: "#232f4b" }
+								style: { fontWeight: "none", fontSize: "10", fontColor: "#232f4b" },
+								format: "{point.y:,.1f}"
 							}
 						},
 						{
 							name: "어제",
 							data: this.data ? this.data.yesterdayData.map(item => item.use) : [],
-							color: "#fdff4b"
+							color: "#fdff4b",
+							format: "{point.y:,.1f}"
 						}
 					]
 				};

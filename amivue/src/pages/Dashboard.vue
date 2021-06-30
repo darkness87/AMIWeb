@@ -7,7 +7,7 @@
 					<dashboard-timer />
 				</div>
 				<total-voltage :data="totalVoltage" />
-				<reading :data="reading" />
+				<reading :data="readingRate" />
 				<today-weather :data="todayWeather" />
 			</b-col>
 			<b-col xl="4" lg="6" md="12" sm="12">
@@ -34,7 +34,7 @@
 					</ul>
 				</div>
 				<server-info />
-				<ami-status-board :data="deviceMapErrorCount" />
+				<ami-status-board :data="deviceRegErrorCount" />
 				<regular-board :data="readingDayInfo" />
 			</b-col>
 		</b-row>
@@ -55,6 +55,8 @@ import Highcharts from "highcharts";
 import theme from "highcharts/themes/dark-unica";
 theme(Highcharts);
 let sse;
+let sseMap;
+let sseRate;
 
 export default {
 	name: "Home",
@@ -77,47 +79,61 @@ export default {
 			const data = JSON.parse(e.data);
 			this.totalVoltage = data.useData;
 			this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
-			this.reading = data.rate;
-			this.deviceMapErrorCount = data.deviceMapErrorCount;
+			this.deviceRegErrorCount = data.deviceRegErrorCount;
 			this.readingDayInfo = data.readingDayInfo;
-			this.regionMap = data.map;
+			//this.readingRate = data.rate;
+		};
+		sseRate = Dashboard.rateHourInfo(60);
+		sseRate.onerror = function() {};
+		sseRate.onopen = function() {};
+		sseRate.onmessage = e => {
+			const data = JSON.parse(e.data);
+			this.readingRate = data.response;
+		};
+		sseMap = Dashboard.mapInfo(60);
+		sseMap.onerror = function() {};
+		sseMap.onopen = function() {};
+		sseMap.onmessage = e => {
+			const data = JSON.parse(e.data);
+			this.regionMap = data.response;
 		};
 		const response = await Dashboard.firstData();
 		const data = response.data;
 		this.totalVoltage = data.useData;
 		this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
-		this.reading = data.rate;
-		this.deviceMapErrorCount = data.deviceMapErrorCount;
+		this.deviceRegErrorCount = data.deviceRegErrorCount;
 		this.readingDayInfo = data.readingDayInfo;
-		this.regionMap = data.map;
-		console.log(this.deviceMapErrorCount);
+		const responseRate = await Dashboard.firstRateData();
+		this.readingRate = responseRate.data.rate;
+		const responseMap = await Dashboard.firstMapData();
+		this.regionMap = responseMap.data.map;
 	},
 	data: function() {
 		return {
 			now: Date.now(),
 			totalVoltage: null,
 			todayWeather: null,
-			reading: null,
-			deviceMapErrorCount: null,
+			readingRate: null,
+			deviceRegErrorCount: null,
 			readingDayInfo: null,
 			regionMap: [
-				{ hckey: "kr-so", value: null },
-				{ hckey: "kr-pu", value: null },
-				{ hckey: "kr-tg", value: null },
-				{ hckey: "kr-in", value: null },
-				{ hckey: "kr-kj", value: null },
-				{ hckey: "kr-tj", value: null },
-				{ hckey: "kr-ul", value: null },
-				{ hckey: "kr-kg", value: null },
-				{ hckey: "kr-kw", value: null },
-				{ hckey: "kr-gb", value: null },
-				{ hckey: "kr-gn", value: null },
-				{ hckey: "kr-cb", value: null },
-				{ hckey: "kr-2685", value: null },
-				{ hckey: "kr-2688", value: null },
-				{ hckey: "kr-kn", value: null },
-				{ hckey: "kr-cj", value: null },
-				{ hckey: "kr-sj", value: null }
+				{ hckey: "kr-so", value: NaN },
+				{ hckey: "kr-pu", value: NaN },
+				{ hckey: "kr-tg", value: NaN },
+				{ hckey: "kr-in", value: NaN },
+				{ hckey: "kr-kj", value: NaN },
+				{ hckey: "kr-tj", value: NaN },
+				{ hckey: "kr-ul", value: NaN },
+				{ hckey: "kr-kg", value: NaN },
+				{ hckey: "kr-kw", value: NaN },
+				{ hckey: "kr-gb", value: NaN },
+				{ hckey: "kr-gn", value: NaN },
+				{ hckey: "kr-cb", value: NaN },
+				{ hckey: "kr-2685", value: NaN },
+				{ hckey: "kr-2688", value: NaN },
+				{ hckey: "kr-kn", value: NaN },
+				{ hckey: "kr-cj", value: NaN },
+				{ hckey: "kr-sj", value: NaN }
 			]
 		};
 	},

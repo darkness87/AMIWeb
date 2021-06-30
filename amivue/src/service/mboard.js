@@ -9,6 +9,30 @@ export default {
 			method: "get"
 		});
 	},
+	firstLp() {
+		return Send({
+			url: "/metering/mboard/lp/firstlp",
+			method: "get"
+		});
+	},
+	firstRate() {
+		return Send({
+			url: "/metering/mboard/rate/firstrate",
+			method: "get"
+		});
+	},
+	firstMap() {
+		return Send({
+			url: "/metering/mboard/map/firstmap",
+			method: "get"
+		});
+	},
+	firstRegion() {
+		return Send({
+			url: "/metering/mboard/region/firstregion",
+			method: "get"
+		});
+	},
 	lpCount(sec) {
 		if (!sec) {
 			sec = 60;

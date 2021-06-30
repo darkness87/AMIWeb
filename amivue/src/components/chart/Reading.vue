@@ -62,10 +62,8 @@ export default {
 						enabled: false
 					},
 					xAxis: {
-						categories: this.data ? this.data.hourRate.map(item => item.hour) : [],
+						categories: this.data ? this.data.hourRate.map(item => item.day) : [],
 						title: null,
-						min: 0,
-						max: 23,
 						gridLineColor: "#232f4b",
 						lineColor: "#232f4b",
 						labels: {
@@ -92,9 +90,26 @@ export default {
 					title: "",
 					exporting: { enabled: false },
 					menu: false,
+					tooltip: {
+						pointFormat: "<span>{point.y:,.1f} %</span>"
+					},
 					series: [
-						{ name: "적시율", data: this.data ? this.data.hourRate.map(item => item.timelyRate) : [], color: "#1ee2df" },
-						{ name: "검침률", data: this.data ? this.data.hourRate.map(item => item.readingRate) : [], color: "#fdff4b" }
+						{
+							name: "적시율",
+							data: this.data ? this.data.hourRate.map(item => item.timelyRate) : [],
+							color: "#1ee2df",
+							dataLabels: {
+								format: "{point.y:,.1f}"
+							}
+						},
+						{
+							name: "검침률",
+							data: this.data ? this.data.hourRate.map(item => item.readingRate) : [],
+							color: "#fdff4b",
+							dataLabels: {
+								format: "{point.y:,.1f}"
+							}
+						}
 					]
 				};
 			}

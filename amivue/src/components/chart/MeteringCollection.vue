@@ -66,7 +66,7 @@ export default {
 						title: null,
 						tickColor: "#232f4b",
 						gridLineColor: "#232f4b",
-						min: "0",
+						min: 0,
 						lineColor: "#232f4b",
 						labels: {
 							style: {
@@ -78,6 +78,7 @@ export default {
 						title: null,
 						tickColor: "#232f4b",
 						gridLineColor: "#232f4b",
+						min: 0,
 						lineColor: "#232f4b",
 						labels: {
 							style: {
@@ -88,6 +89,9 @@ export default {
 					exporting: { enabled: false },
 					title: "",
 					menu: false,
+					tooltip: {
+						pointFormat: "<span>{point.y:,1f} 개</span>"
+					},
 					series: [
 						{
 							name: "데이터 수집 수",

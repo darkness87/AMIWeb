@@ -27,6 +27,10 @@ export default {
 	components: { MeteringCollection, MeteringRegionBoard, MeteringRate, MeteringRegionMap },
 	mounted() {
 		this.getFirstData();
+		//this.getFirstLpData();
+		//this.getFirstRateData();
+		//this.getFirstMapData();
+		//this.getFirstRegionData();
 	},
 	data() {
 		return {
@@ -44,6 +48,22 @@ export default {
 			const response = await Mboard.firstData();
 			this.allData = response.data;
 		}
+		// async getFirstLpData() {
+		// 	const response = await Mboard.firstLp();
+		// 	this.lpData = response.data;
+		// },
+		// async getFirstRateData() {
+		// 	const response = await Mboard.firstRate();
+		// 	this.rateData = response.data;
+		// },
+		// async getFirstMapData() {
+		// 	const response = await Mboard.firstMap();
+		// 	this.mapData = response.data;
+		// },
+		// async getFirstRegionData() {
+		// 	const response = await Mboard.firstRegion();
+		// 	this.regionData = response.data;
+		// }
 	}
 };
 </script>

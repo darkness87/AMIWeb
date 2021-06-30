@@ -25,7 +25,7 @@
 			"title": "장애",
 			"FBoard": "장애 현황",
 			"code": "상태 코드 관리",
-			"status": "네트워크 상태",
+			"status": "네트워크 장애상태",
 			"reading": "미 검침 정보"
 		},
 		"support": {
@@ -243,7 +243,12 @@
 				"networkCount": "네트워크",
 				"mappingSeq": "번호",
 				"dateTime": "이력날짜",
-				"checkCount": "변경수"
+				"checkCount": "변경수",
+				"estateCount": "단지수",
+				"readingRate": "검침율",
+				"level1": "누진 1단계",
+				"level2": "누진 2단계",
+				"level3": "누진 3단계"
 			}
 		}
 	},

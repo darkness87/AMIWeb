@@ -117,7 +117,7 @@ export default {
 									fontSize: "12px",
 									fontFamily: "sans-serif"
 								},
-								format: "{point.y} %"
+								format: "{point.y:.1f} %"
 							}
 						}
 					]

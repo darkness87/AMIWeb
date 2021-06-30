@@ -107,11 +107,36 @@ export default {
 		}
 
 		const token = Store.state.userStore.token.accessToken;
-		return new EventSourcePolyfill("/api/dashboard/location/failure/mapinfo?duration=" + sec, {
+		return new EventSourcePolyfill("/api/dashboard/location/rate/mapinfo?duration=" + sec, {
 			headers: { "x-token": token },
 			format: "json",
 			withCredentials: true,
 			heartbeatTimeout: 300000
+		});
+	},
+	rateHourInfo(sec) {
+		if (!sec) {
+			sec = 60;
+		}
+
+		const token = Store.state.userStore.token.accessToken;
+		return new EventSourcePolyfill("/api/dashboard/readingrateAll/dayHour?duration=" + sec, {
+			headers: { "x-token": token },
+			format: "json",
+			withCredentials: true,
+			heartbeatTimeout: 300000
+		});
+	},
+	firstMapData() {
+		return Send({
+			url: "/dashboard/map/firstmap",
+			method: "get"
+		});
+	},
+	firstRateData() {
+		return Send({
+			url: "/dashboard/rate/firstrate",
+			method: "get"
 		});
 	}
 };

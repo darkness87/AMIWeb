@@ -42,20 +42,28 @@ export default {
 					label: this.$t("component.content.table.regionName")
 				},
 				{
-					key: "allCount",
-					label: this.$t("component.content.table.allCollectionCount")
+					key: "estateCount",
+					label: this.$t("component.content.table.estateCount")
 				},
 				{
-					key: "readingCount",
-					label: this.$t("component.content.table.readingCount")
+					key: "houseCount",
+					label: this.$t("component.content.table.houseCount")
 				},
 				{
-					key: "errorCount",
-					label: this.$t("component.content.table.errorReadingCount")
+					key: "reading",
+					label: this.$t("component.content.table.readingRate")
 				},
 				{
-					key: "networkCount",
-					label: this.$t("component.content.table.networkCount")
+					key: "lvevl1Count",
+					label: this.$t("component.content.table.level1")
+				},
+				{
+					key: "lvevl2Count",
+					label: this.$t("component.content.table.level2")
+				},
+				{
+					key: "lvevl3Count",
+					label: this.$t("component.content.table.level3")
 				}
 			]
 		};

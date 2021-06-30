@@ -139,7 +139,7 @@ export default {
 
 					tooltip: {
 						headerFormat: "<b>{series.name}</b><br/>",
-						pointFormat: "{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}"
+						pointFormat: "{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}%"
 					},
 
 					legend: {
