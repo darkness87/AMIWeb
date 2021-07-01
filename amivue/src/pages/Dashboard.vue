@@ -143,6 +143,14 @@ export default {
 			sse.close();
 			console.log("AllData SSE Destroyed!!");
 		}
+		if (sseRate) {
+			sseRate.close();
+			console.log("AllData sseRate Destroyed!!");
+		}
+		if (sseMap) {
+			sseMap.close();
+			console.log("AllData sseMap Destroyed!!");
+		}
 	}
 };
 </script>
