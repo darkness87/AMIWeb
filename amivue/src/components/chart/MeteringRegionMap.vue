@@ -44,7 +44,7 @@ export default {
 		chartOptions() {
 			return {
 				chart: {
-					height: 630,
+					height: 440,
 					borderWidth: 0,
 					plotBackgroundColor: false,
 					plotBorderWidth: false,
@@ -52,7 +52,13 @@ export default {
 				},
 
 				title: {
-					text: "확산사업 운영 정보"
+					text: "확산사업 운영 정보",
+					align: "left",
+					x: 10,
+					y: 15,
+					style: {
+						fontSize: "13"
+					}
 				},
 
 				mapNavigation: { enabled: false },

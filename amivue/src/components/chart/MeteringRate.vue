@@ -3,18 +3,16 @@
 		<b-col xl="6" lg="12">
 			<div class="box svg">
 				<h6>{{ $t("MBoard.readingTimelyRate") }}</h6>
-				<div class="data">{{ data ? Math.floor(data.todayTimelyRate * 100) / 100 : 0 }}%</div>
-				<div class="svg-wrap">
-					<img src="@/assets/svg/box.svg" />
+				<div class="chart">
+					<high-charts :options="chartOptions" />
 				</div>
 			</div>
 		</b-col>
 		<b-col xl="6" lg="12">
 			<div class="box svg">
 				<h6>{{ $t("MBoard.readingRate") }}</h6>
-				<div class="data">{{ data ? Math.floor(data.todayMeterReadingRate * 100) / 100 : 0 }}%</div>
-				<div class="svg-wrap">
-					<img src="@/assets/svg/sound.svg" />
+				<div class="chart">
+					<high-charts :options="chartOptions" />
 				</div>
 			</div>
 		</b-col>
@@ -22,36 +20,96 @@
 </template>
 
 <script>
-import Mboard from "@/service/mboard";
-let sse;
+import Highcharts from "highcharts";
+import HighChartsMoreInit from "highcharts/highcharts-more";
+import SolidGaugeInit from "highcharts/modules/solid-gauge";
+import { Chart } from "highcharts-vue";
+HighChartsMoreInit(Highcharts);
+SolidGaugeInit(Highcharts);
 
 export default {
-	props: ["allData"],
-	watch: {
-		allData: function(value) {
-			this.data = value.rate;
-		}
+	components: {
+		HighCharts: Chart
 	},
-	mounted() {
-		sse = Mboard.readingRate();
-		sse.onerror = function() {};
-		sse.onopen = function() {};
-		sse.onmessage = e => {
-			const data = JSON.parse(e.data).response;
-			this.data = data;
-		};
+	computed: {
+		chartOptions: {
+			cache: false,
+			get() {
+				return {
+					chart: {
+						//검침률
+						type: this.chartName,
+						height: "170",
+						borderWidth: 0,
+						plotBackgroundColor: false
+					},
+					pane: {
+						startAngle: 0,
+						endAngle: 360,
+						background: [
+							{
+								// Track for Move
+								outerRadius: "90%",
+								innerRadius: "80%",
+								backgroundColor: "#10182a",
+								borderWidth: 1,
+								borderColor: "#10182a"
+							}
+						]
+					},
+					yAxis: {
+						min: 0,
+						max: 100,
+						lineWidth: 0,
+						tickPositions: []
+					},
+					plotOptions: {
+						solidgauge: {
+							dataLabels: {
+								enabled: false
+							},
+							linecap: "round",
+							stickyTracking: false,
+							rounded: true
+						}
+					},
+					title: "",
+					exporting: { enabled: false },
+					credits: { enabled: false },
+					menu: false,
+					series: [
+						{
+							name: "적시율",
+							data: [
+								{
+									color: "#7383fd",
+									radius: "90%",
+									innerRadius: "80%",
+									y: 70
+								}
+							],
+							dataLabels: {
+								enabled: true,
+								borderWidth: 0,
+								y: -16,
+								x: 2,
+								// fontSize: "11px",
+								style: {
+									fontSize: "14px",
+									fontFamily: "sans-serif"
+								},
+								format: "{point.y:.1f} %"
+							}
+						}
+					]
+				};
+			}
+		}
 	},
 	data() {
 		return {
-			chartName: "column",
-			data: null
+			chartName: "solidgauge"
 		};
-	},
-	beforeDestroy() {
-		if (sse) {
-			sse.close();
-			console.log("meteringRate SSE Destroyed!!");
-		}
 	}
 };
 </script>
