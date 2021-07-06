@@ -36,6 +36,8 @@
 		"components": {
 			"title": "컴포넌트",
 			"dashboard": "대시보드 컴포넌트",
+			"mboard": "검침 현황",
+			"fboard": "장애 현황",
 			"components": "컴포넌트 모음",
 			"layout": "레이아웃 모음"
 		}

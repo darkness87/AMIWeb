@@ -132,6 +132,16 @@ const routes = [
 				path: "templateDashboard",
 				name: "TemplateDashboard",
 				component: () => import("@/Template/DashBoard")
+			},
+			{
+				path: "templateMboard",
+				name: "TemplateMboard",
+				component: () => import("@/Template/MBoard")
+			},
+			{
+				path: "templateFboard",
+				name: "TemplateFboard",
+				component: () => import("@/Template/FBoard")
 			}
 		]
 	},

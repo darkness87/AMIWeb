@@ -198,6 +198,16 @@ export default {
 							href: "/templatePages",
 							title: this.$t("menu.components.layout"),
 							icon: ""
+						},
+						{
+							href: "/templateMboard",
+							title: this.$t("menu.components.mboard"),
+							icon: ""
+						},
+						{
+							href: "/templateFboard",
+							title: this.$t("menu.components.fboard"),
+							icon: ""
 						}
 					]
 				}

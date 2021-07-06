@@ -3,21 +3,12 @@
 		<content-header :pageName="pageName" :paths="paths" />
 		<b-row class="row-wrap">
 			<b-col xl="7" lg="7">
-				<div class="">
-					<metering-collection :allData="allData" />
-				</div>
-				<b-row class="row-wrap box-width">
-					<b-col xl="6" lg="6">
-						<ul>
-							<li><metering-rate :allData="allData" /></li>
-							<li><regular-board :data="readingDayInfo" /></li>
-						</ul>
-					</b-col>
-					<b-col xl="6" lg="6"><metering-region-map :allData="allData"/></b-col>
-				</b-row>
+				<metering-collection :allData="allData" />
+				<metering-region-board :allData="allData" />
 			</b-col>
 			<b-col xl="5" lg="5">
-				<metering-region-board :allData="allData" />
+				<metering-rate :allData="allData" />
+				<metering-region-map :allData="allData" />
 			</b-col>
 		</b-row>
 	</div>
@@ -29,12 +20,11 @@ import MeteringRegionBoard from "@/components/chart/MeteringRegionBoard";
 import MeteringRate from "@/components/chart/MeteringRate";
 import MeteringRegionMap from "@/components/chart/MeteringRegionMap";
 import ContentMixin from "@/components/content/mixin";
-import RegularBoard from "@/components/chart/RegularBoard";
 
 export default {
 	mixins: [ContentMixin],
 	props: ["dashboard"],
-	components: { MeteringCollection, MeteringRegionBoard, MeteringRate, MeteringRegionMap, RegularBoard },
+	components: { MeteringCollection, MeteringRegionBoard, MeteringRate, MeteringRegionMap },
 	mounted() {
 		this.getFirstData();
 		//this.getFirstLpData();
@@ -77,22 +67,3 @@ export default {
 	}
 };
 </script>
-<style lang="scss">
-.box-width {
-	margin-left: -20px;
-	margin-right: -20px;
-}
-.row-wrap {
-	margin-bottom: 0;
-}
-.tableContainer table tr td,
-.tableContainer table tr th {
-	padding: 0.7rem 0.5rem !important;
-}
-.regularBoard {
-	margin: 30px 10px;
-}
-.regularBoard ul li {
-	margin-bottom: 28px;
-}
-</style>

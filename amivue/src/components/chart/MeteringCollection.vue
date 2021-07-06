@@ -42,7 +42,7 @@ export default {
 				return {
 					chart: {
 						type: this.chartName,
-						height: 225,
+						height: 150,
 						borderWidth: 0,
 						plotBackgroundColor: false,
 						plotBorderWidth: false,
