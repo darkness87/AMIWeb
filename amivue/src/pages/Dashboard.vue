@@ -72,17 +72,6 @@ export default {
 		RegularBoard
 	},
 	async mounted() {
-		const response = await Dashboard.firstData();
-		const data = response.data;
-		this.totalVoltage = data.useData;
-		this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
-		this.deviceRegErrorCount = data.deviceRegErrorCount;
-		this.readingDayInfo = data.readingDayInfo;
-		const responseRate = await Dashboard.firstRateData();
-		this.readingRate = responseRate.data.rate;
-		const responseMap = await Dashboard.firstMapData();
-		this.regionMap = responseMap.data.map;
-
 		sse = Dashboard.allData(60);
 		sse.onerror = function() {};
 		sse.onopen = function() {};
@@ -108,6 +97,16 @@ export default {
 			const data = JSON.parse(e.data);
 			this.regionMap = data.response;
 		};
+		const response = await Dashboard.firstData();
+		const data = response.data;
+		this.totalVoltage = data.useData;
+		this.todayWeather = { todayWeather: data.weather, weatherData: data.weatherData };
+		this.deviceRegErrorCount = data.deviceRegErrorCount;
+		this.readingDayInfo = data.readingDayInfo;
+		const responseRate = await Dashboard.firstRateData();
+		this.readingRate = responseRate.data.rate;
+		const responseMap = await Dashboard.firstMapData();
+		this.regionMap = responseMap.data.map;
 	},
 	data: function() {
 		return {
