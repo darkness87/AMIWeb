@@ -91,8 +91,7 @@ export default {
 					exporting: { enabled: false },
 					menu: false,
 					tooltip: {
-						headerFormat: "<b>{series.name}</b><br/>",
-						pointFormat: "<span>{point.x}일 : {point.y:,.1f} %</span>"
+						pointFormat: "<span>{series.name} : {point.y:,.1f} %</span>"
 					},
 					series: [
 						{
