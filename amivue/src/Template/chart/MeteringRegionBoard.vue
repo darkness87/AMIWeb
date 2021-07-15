@@ -1,81 +1,186 @@
 <template>
 	<div class="box">
 		<h5>
-			<span>{{ $t("MBoard.regionBoard") }}</span>
-			<!-- <b class="fontC">7 {{ $t("dashboard.ea") }}</b> -->
+			<span>전체현황</span>
+			<b class="fontC">2021-01-20 12:15 기준</b>
 		</h5>
 		<div class="tableWarp">
 			<div class="tableContainer mboard-table">
-				<b-table :items="itemList" :fields="fields" />
+				<table role="table" class="table b-table">
+					<thead role="rowgroup">
+						<tr>
+							<th rowspan="2">행정구역</th>
+							<th rowspan="2">단지</th>
+							<th rowspan="2">수용가 수</th>
+							<th rowspan="2">검침률</th>
+							<th colspan="3">누진단계</th>
+						</tr>
+						<tr>
+							<th>1단계</th>
+							<th>2단계</th>
+							<th>3단계</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>서울</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>부산</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>대구</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>인천</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>광주</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>대전</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>울산</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>경기</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>강원</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>충북</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>충남</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>전북</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>전남</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>경북</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>경남</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>제주</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>세종</td>
+							<td>15050</td>
+							<td>90%</td>
+							<td>10</td>
+							<td>0</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 </template>
-
-<script>
-import MBoard from "@/service/mboard";
-let sse;
-
-export default {
-	props: ["allData"],
-	watch: {
-		allData: function(value) {
-			this.itemList = value.region;
-		}
-	},
-	mounted() {
-		sse = MBoard.aggregations();
-		sse.onerror = function() {};
-		sse.onopen = function() {};
-		sse.onmessage = e => {
-			const data = JSON.parse(e.data).response;
-			this.itemList = data;
-		};
-	},
-	data() {
-		return {
-			chartName: "column",
-			itemList: null,
-			fields: [
-				{
-					key: "region",
-					label: this.$t("component.content.table.regionName")
-				},
-				{
-					key: "estateCount",
-					label: this.$t("component.content.table.estateCount")
-				},
-				{
-					key: "houseCount",
-					label: this.$t("component.content.table.houseCount")
-				},
-				{
-					key: "reading",
-					label: this.$t("component.content.table.readingRate")
-				},
-				{
-					key: "lvevl1Count",
-					label: this.$t("component.content.table.level1")
-				},
-				{
-					key: "lvevl2Count",
-					label: this.$t("component.content.table.level2")
-				},
-				{
-					key: "lvevl3Count",
-					label: this.$t("component.content.table.level3")
-				}
-			]
-		};
-	},
-	beforeDestroy() {
-		if (sse) {
-			sse.close();
-			console.log("MBoard aggregations SSE Destroyed!!");
-		}
-	}
-};
-</script>
 
 <style lang="scss">
 @import "~@/assets/scss/table/tableBlack.scss";

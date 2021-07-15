@@ -43,20 +43,20 @@
 		<b-row class="row-wrap">
 			<b-col xl="7" lg="7">
 				<div class="">
-					<metering-collection :allData="allData" />
+					<metering-collection />
 				</div>
 				<b-row class="row-wrap box-width">
 					<b-col xl="6" lg="6">
 						<ul>
-							<li><metering-rate :allData="allData" /></li>
-							<li><regular-board :data="readingDayInfo" /></li>
+							<li><metering-rate /></li>
+							<li><regular-board /></li>
 						</ul>
 					</b-col>
-					<b-col xl="6" lg="6"><metering-region-map :allData="allData"/></b-col>
+					<b-col xl="6" lg="6"><metering-region-map /></b-col>
 				</b-row>
 			</b-col>
 			<b-col xl="5" lg="5">
-				<metering-region-board :allData="allData" />
+				<metering-region-board />
 			</b-col>
 		</b-row>
 	</div>
@@ -79,6 +79,8 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "~@/assets/scss/modal/modalDetailEquipmentOther.scss";
+@import "~@/assets/scss/components/maintitle.scss";
 .box-width {
 	margin-left: -20px;
 	margin-right: -20px;
