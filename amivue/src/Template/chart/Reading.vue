@@ -76,6 +76,10 @@ export default {
 					},
 					yAxis: {
 						title: null,
+						min: 0,
+						max: 100,
+						height: 125,
+						top: 50,
 						tickColor: "#232f4b",
 						gridLineColor: "#232f4b",
 						lineColor: "#232f4b",
