@@ -8,13 +8,13 @@
 			</b-navbar>
 			<b-nav class="infowrap ml-auto">
 				<b-nav-item class="error">
-					<b-icon icon="question-diamond"></b-icon>
+					<!-- <b-icon icon="question-diamond"></b-icon> -->
 					<!--<b-badge pill variant="danger">1</b-badge>-->
 				</b-nav-item>
 				<b-nav-item class="aram">
 					<!--on -->
 					<b-icon icon="bell" id="tooltip-button-interactive"></b-icon>
-					<b-badge pill variant="danger">2</b-badge>
+					<!-- <b-badge pill variant="danger">2</b-badge> -->
 				</b-nav-item>
 				<!-- <b-nav-item href="/templateDashboard">대시보드 컴포넌트</b-nav-item>
 				<b-nav-item href="/templateComponents">컴포넌트모음</b-nav-item>
@@ -24,7 +24,7 @@
 				<b-nav-item class="logout" href="#" @click.prevent="logout()">{{ $t("header.logout") }}</b-nav-item>
 			</b-nav>
 		</b-row>
-		<b-tooltip target="tooltip-button-interactive"> 삼성 아파트에 전기검침이 있습니다 </b-tooltip>
+		<!-- <b-tooltip target="tooltip-button-interactive"> 삼성 아파트에 전기검침이 있습니다 </b-tooltip> -->
 	</div>
 </template>
 

@@ -79,7 +79,8 @@
 												<thead>
 													<tr :class="{ error: item.status == 1 }" v-for="(item, index) in row.item.stepMeter" :key="index">
 														<td><b-icon icon="arrow-return-right"></b-icon></td>
-														<td>{{ item.meterId }} ({{ item.houseName }})</td>
+														<td>{{ item.meterId }} ( {{ item.houseName }} )</td>
+														<td>{{ item.meterType }}</td>
 														<td>{{ item.meterTime }}</td>
 														<td>{{ item.fap }}</td>
 													</tr>

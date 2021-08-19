@@ -68,8 +68,8 @@ export default {
 							alias: "/estate/:pageNumber",
 							bicon: "",
 							badge: {
-								text: "N",
-								class: "vsm--badge_new"
+								//text: "N",
+								//class: "vsm--badge_new"
 								// attributes: {}
 								// element: 'span'
 							}
@@ -86,8 +86,8 @@ export default {
 							alias: "/equipment/:pageNumber",
 							icon: "",
 							badge: {
-								text: "12",
-								class: "vsm--badge_default"
+							// 	text: "12",
+							// 	class: "vsm--badge_default"
 							}
 						},
 						{
@@ -165,6 +165,7 @@ export default {
 					href: "",
 					title: this.$t("menu.support.title"),
 					bicon: "person-fill",
+					hidden: this.userLevel != 0,
 					child: [
 						{
 							href: "/ask",
